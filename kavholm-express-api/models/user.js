@@ -14,6 +14,16 @@ class User {
       isAdmin: user.is_admin,
       createdAt: user.created_at,
     }
+
+    // return {
+    //   id: user.id,
+    //   email: user.email,
+    //   username: user.username,
+    //   first_name: user.first_name,
+    //   last_name: user.last_name,
+    //   is_admin: user.is_admin,
+    //   created_at: user.created_at,
+    // }
   }
 
   static async login(credentials) {
@@ -77,7 +87,7 @@ class User {
     )
     const user = userResult.rows[0]
 
-    return user
+    return User.makePublicUser(user)
   }
 
   static async fetchUserByEmail(email) {

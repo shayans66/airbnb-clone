@@ -38,6 +38,8 @@ const authedUserIsNotListingOwner = async (req, res, next) => {
     const { listingId } = req.params
     const listing = await Listing.fetchListingById(listingId)
 
+    // console.log('ttttt',listing.username);
+
     if (listing.username === user.username) {
       throw new BadRequestError("User is not allowed to book their own listing.")
     }

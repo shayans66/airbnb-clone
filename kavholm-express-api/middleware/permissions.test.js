@@ -84,10 +84,11 @@ describe("ListingPermissions", () => {
     test("Throws error if authed user does own listing", async () => {
       expect.assertions(2)
       const testListing = testListingIds[0]
+      
 
       const req = { params: { listingId: testListing } }
       const res = { locals: { user: { username: "lebron" } } }
-      const next = (err) => expect(err instanceof BadRequestError).toBeTruthy()
+      const next = (err) => expect(err instanceof BadRequestError).toBeTruthy() 
       await permissions.authedUserIsNotListingOwner(req, res, next)
 
       const { listing } = res.locals
